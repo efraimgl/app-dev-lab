@@ -33,4 +33,4 @@ test: null
 github:
   user: efraimgl
   token: empty-pass
-  url: https://api.github.com/repos/efglbusiness/app-dev-lab/issues
+  url: https://api.github.com/repos/efraimgl/app-dev-lab/issues
