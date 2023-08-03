@@ -28,7 +28,7 @@ volume:
   mount:
     path: /tmp/html
 
-test: Healthy
+test: null
 
 github:
   user: efraimgl
