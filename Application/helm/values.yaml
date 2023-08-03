@@ -30,9 +30,7 @@ volume:
 
 test: Healthy
 
-...
 github:
   user: efraimgl
   token: empty-pass
   url: <https://api.github.com/repos/efglbusiness/app-dev-lab/issues>
-...
