@@ -10,19 +10,16 @@ spec:
     metadata:
       name: test-url
     spec:
-      restartPolicy: Never
-      containers:
-      - name: test-url
-        image: registry.access.redhat.com/ubi8-minimal:8.7-1031
-        workingDir: /workspace/output
-        command:
-          - /bin/bash
-          - -c
-          - "response=$(curl -s ${SERVICE}:${PORT}/health/liveliness) && echo "$response" | grep ${TEST} || exit 1"
-        env:
-        - name: SERVICE
-          value: '{{ .Release.Name }}-service'
-        - name: PORT
-          value: '{{ .Values.service.servicePort }}'
-        - name: TEST
-          value: 'pattern-to-match'
+     restartPolicy: Never
+     containers:
+     - name: test-url
+       image: registry.access.redhat.com/ubi8-minimal:8.7-1031
+       workingDir: /workspace/output
+       command: ["/bin/bash", "-c"]
+       args: ["curl ${SERVICE}:${PORT}/health/liveliness | grep ${TEST} || exit 1"]
+       env:
+         - name: SERVICE
+           value: '{{ .Release.Name }}-service'
+         - name: PORT
+           value: '{{ .Values.service.servicePort }}'
+  backoffLimit: 1
